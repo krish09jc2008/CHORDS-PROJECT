@@ -1,0 +1,96 @@
+  /* ---------- 1. COLOURS (change these to restyle everything) ---------- */
+  :root {
+    --bg1: #0a0f2c;      /* dark navy */
+    --bg2: #1b0f3d;      /* dark purple */
+    --cyan: #22d3ee;
+    --violet: #a855f7;
+    --pink: #f472b6;
+    --ink: #eef2ff;
+    --muted: #9aa4c7;
+    --card: rgba(255, 255, 255, 0.06);
+    --line: rgba(255, 255, 255, 0.16);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 16px 60px; min-height: 100vh;
+    /* gradient background with two soft coloured glows */
+    background:
+      radial-gradient(circle at 15% 10%, rgba(34, 211, 238, 0.18), transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.22), transparent 45%),
+      linear-gradient(160deg, var(--bg1), var(--bg2));
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.5;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+
+  /* gradient text for the title */
+  h1 {
+    font-family: Georgia, serif; font-size: 2.4rem; margin: 0 0 4px;
+    background: linear-gradient(90deg, var(--cyan), var(--violet), var(--pink));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.5));
+  }
+  p.sub { margin: 0 0 24px; color: var(--muted); }
+
+  /* ---------- 2. UPLOAD AREA ---------- */
+  .upload {
+    display: block; padding: 20px; border: 2px dashed var(--cyan);
+    border-radius: 12px; text-align: center; cursor: pointer; color: var(--cyan);
+    background: var(--card);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
+    transition: box-shadow 0.25s, background 0.25s;
+  }
+  .upload:hover, .upload:focus-within {
+    background: rgba(34, 211, 238, 0.1);
+    box-shadow: 0 0 32px rgba(34, 211, 238, 0.55);
+  }
+  .upload input { display: none; }
+  #status { min-height: 1.5em; margin: 10px 0; color: var(--muted); }
+  progress { width: 100%; height: 8px; display: none; accent-color: var(--violet); }
+  audio { width: 100%; margin: 12px 0; display: none; }
+
+  /* ---------- 3. THE BIG CHORD (glowing lines = 6 guitar strings) ---------- */
+  #now {
+    display: none; height: 180px; margin: 12px 0 24px; border-radius: 14px;
+    background:
+      repeating-linear-gradient(to bottom, transparent 0 24px, rgba(34, 211, 238, 0.75) 24px 26px) 0 14px / 100% 150px no-repeat,
+      #0d1233;
+    border: 1px solid var(--line);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.4), inset 0 0 30px rgba(34, 211, 238, 0.12);
+    align-items: center; justify-content: center;
+  }
+  #now span {
+    font-family: Georgia, serif; font-size: 5rem; font-weight: bold; color: #fff;
+    background: #0d1233; padding: 0 28px; border-radius: 10px;
+    text-shadow: 0 0 12px var(--cyan), 0 0 32px var(--violet);
+  }
+
+  /* ---------- 4. CHORD LIST ---------- */
+  h2 { font-family: Georgia, serif; font-size: 1.2rem; margin: 24px 0 8px; color: var(--ink); }
+  #top { margin: 0; color: var(--cyan); font-size: 1.1rem; text-shadow: 0 0 10px rgba(34, 211, 238, 0.6); }
+  #list { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    border: 1px solid var(--line); background: var(--card); border-radius: 8px;
+    padding: 6px 14px; cursor: pointer; font-size: 1rem; color: var(--ink);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .chip small { display: block; color: var(--muted); font-size: 0.75rem; }
+  .chip:hover { border-color: var(--cyan); box-shadow: 0 0 14px rgba(34, 211, 238, 0.5); }
+  .chip.on {
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    border-color: transparent; color: #fff;
+    box-shadow: 0 0 22px rgba(168, 85, 247, 0.8);
+  }
+  .chip.on small { color: #e3e9ff; }
+  .note { margin-top: 28px; font-size: 0.9rem; color: var(--muted); }
+
+  /* ---------- 5. CAPO BOX ---------- */
+  #capo {
+    margin: 14px 0 0; padding: 12px 16px; border-radius: 10px; font-size: 1.05rem;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(168, 85, 247, 0.22));
+    border: 1px solid var(--line); box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  #capo:empty { display: none; }
+  #capo b { color: var(--cyan); text-shadow: 0 0 10px rgba(34, 211, 238, 0.6); }

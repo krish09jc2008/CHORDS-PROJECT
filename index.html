@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chord Finder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Chord Finder</h1>
+  <p class="sub">Upload a song and see which guitar chords play, and when.</p>
+
+  <label class="upload">
+    Choose an MP3 or WAV file
+    <input type="file" id="file" accept="audio/*">
+  </label>
+  <div id="status"></div>
+  <progress id="bar" max="100" value="0"></progress>
+
+  <audio id="player" controls></audio>
+  <div id="now"><span id="big">-</span></div>
+
+  <h2 id="topTitle" style="display:none">Chords used</h2>
+  <p id="top"></p>
+  <p id="capo"></p>
+  <h2 id="listTitle" style="display:none">Chord timeline (tap a chord to jump there)</h2>
+  <div id="list"></div>
+
+  <p class="note">Accuracy depends on the song. Simple songs with a clear guitar or piano work best.
+  This tool finds major and minor chords only.</p>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
